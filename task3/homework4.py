@@ -96,6 +96,11 @@ def main():
     x_2s = [result[0][1] for result in results]
     u, inv = np.unique(x_2s, return_inverse=True)
     counts = np.bincount(inv)
+
+    #comnpute probability that infection is still ongoing
+    prob_1 = counts[1]/sum(counts)
+
+    print(f'Probability that the infections is still on going at T=10: {prob_1}')
     plt.figure(0)
     plt.bar(u, counts, width=0.5)
     plt.xticks(np.arange(0,6,1))
@@ -105,8 +110,18 @@ def main():
 
     #Subtask C
     x_4s = [result[0][3] for result in results]
+
+    #average and std of the number of people who died
+    average = np.average(x_4s)
+    std = np.std(x_4s)
+
+    print(f'Average (+-std) number of who died by T=10: {average}+-{std}')
+
     u, inv = np.unique(x_4s, return_inverse=True)
     counts = np.bincount(inv)
+
+
+
     plt.figure(1)
     plt.bar(u, counts, width=0.5)
     plt.xticks(np.arange(0,6,1))
