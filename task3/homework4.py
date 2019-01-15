@@ -97,7 +97,7 @@ def main():
     u, inv = np.unique(x_2s, return_inverse=True)
     counts = np.bincount(inv)
 
-    #comnpute probability that infection is still ongoing
+    #probability that infection is still ongoing
     prob_1 = counts[1]/sum(counts)
 
     print(f'Probability that the infections is still on going at T=10: {prob_1}')
